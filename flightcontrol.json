@@ -26,6 +26,8 @@
                                 "id": "my-api",
                                 "value": "host"
                             }
+                        },
+                        "NAME": "web"
                         }
                     }
                 },
@@ -53,7 +55,8 @@
                                 "id": "my-redis",
                                 "value": "host"
                             }
-                        }
+                        },
+                        "NAME": "api"
                     }
                 },
                 {
@@ -79,6 +82,8 @@
                                 "id": "my-redis",
                                 "value": "host"
                             }
+                        },
+                        "NAME": "redis"
                         }
                     }
                 },
