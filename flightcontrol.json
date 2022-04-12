@@ -1,102 +1,99 @@
 {
-    "environments": [
-        {
-            "id": "mt-demo",
-            "name": "mt-demo",
-            "region": "us-east-1",
-            "source": {
-                "branch": "main"
-            },
-            "services": [
-                {
-                    "id": "my-webapp",
-                    "name": "My Webapp",
-                    "type": "fargate",
-                    "dockerfilePath": "Dockerfile",
-                    "dockerContext": "./",
-                    "cpu": 0.25,
-                    "memory": 0.5,
-                    "domain": "my-webapp.opsdepartment.com",
-                    "port": 8080,
-                    "minInstances": 1,
-                    "maxInstances": 1,
-                    "envVariables": {
-                        "API_URL": {
-                            "fromService": {
-                                "id": "my-api",
-                                "value": "host"
-                            }
-                        },
-                        "NAME": "web"
-                    }
-                }
-            },
-            {
-                "id": "my-api",
-                "name": "My API",
-                "type": "fargate",
-                "dockerfilePath": "Dockerfile",
-                "dockerContext": "./",
-                "cpu": 0.25,
-                "memory": 0.5,
-                "domain": "my-api.opsdepartment.com",
-                "port": 8080,
-                "minInstances": 1,
-                "maxInstances": 1,
-                "envVariables": {
-                    "DATABASE_URL": {
-                        "fromService": {
-                            "id": "db",
-                            "value": "dbConnectionString"
-                        }
-                    },
-                    "REDIS_HOST": {
-                        "fromService": {
-                            "id": "my-redis",
-                            "value": "host"
-                        }
-                    },
-                    "NAME": "api"
-                }
-            },
-            {
-                "id": "my-redis",
-                "name": "My Redis",
-                "type": "fargate",
-                "dockerfilePath": "Dockerfile",
-                "dockerContext": "./",
-                "cpu": 0.25,
-                "memory": 0.5,
-                "port": 6379,
-                "minInstances": 1,
-                "maxInstances": 1,
-                "envVariables": {
-                    "DATABASE_URL": {
-                        "fromService": {
-                            "id": "db",
-                            "value": "dbConnectionString"
-                        }
-                    },
-                    "REDIS_HOST": {
-                        "fromService": {
-                            "id": "my-redis",
-                            "value": "host"
-                        }
-                    },
-                    "NAME": "redis"
-                }
-            },
-            {
-                "id": "db",
-                "name": "Database",
-                "type": "rds",
-                "engine": "mysql",
-                "engineVersion": "8",
-                "instanceSize": "db.t2.micro",
-                "storage": 20,
-                "private": false
-            }
-        ]
-    }
-]
+	"environments": [{
+		"id": "mt-demo",
+		"name": "mt-demo",
+		"region": "us-east-1",
+		"source": {
+			"branch": "main"
+		},
+		"services": [{
+				"id": "my-webapp",
+				"name": "My Webapp",
+				"type": "fargate",
+				"dockerfilePath": "Dockerfile",
+				"dockerContext": "./",
+				"cpu": 0.25,
+				"memory": 0.5,
+				"domain": "my-webapp.opsdepartment.com",
+				"port": 8080,
+				"minInstances": 1,
+				"maxInstances": 1,
+				"envVariables": {
+					"API_URL": {
+						"fromService": {
+							"id": "my-api",
+							"value": "host"
+						}
+					},
+					"NAME": "web"
+				}
+
+			},
+			{
+				"id": "my-api",
+				"name": "My API",
+				"type": "fargate",
+				"dockerfilePath": "Dockerfile",
+				"dockerContext": "./",
+				"cpu": 0.25,
+				"memory": 0.5,
+				"domain": "my-api.opsdepartment.com",
+				"port": 8080,
+				"minInstances": 1,
+				"maxInstances": 1,
+				"envVariables": {
+					"DATABASE_URL": {
+						"fromService": {
+							"id": "db",
+							"value": "dbConnectionString"
+						}
+					},
+					"REDIS_HOST": {
+						"fromService": {
+							"id": "my-redis",
+							"value": "host"
+						}
+					},
+					"NAME": "api"
+				}
+			},
+			{
+				"id": "my-redis",
+				"name": "My Redis",
+				"type": "fargate",
+				"dockerfilePath": "Dockerfile",
+				"dockerContext": "./",
+				"cpu": 0.25,
+				"memory": 0.5,
+				"port": 6379,
+				"minInstances": 1,
+				"maxInstances": 1,
+				"envVariables": {
+					"DATABASE_URL": {
+						"fromService": {
+							"id": "db",
+							"value": "dbConnectionString"
+						}
+					},
+					"REDIS_HOST": {
+						"fromService": {
+							"id": "my-redis",
+							"value": "host"
+						}
+					},
+					"NAME": "redis"
+				}
+			},
+			{
+				"id": "db",
+				"name": "Database",
+				"type": "rds",
+				"engine": "mysql",
+				"engineVersion": "8",
+				"instanceSize": "db.t2.micro",
+				"storage": 20,
+				"private": false
+			}
+		]
+	}]
 }
