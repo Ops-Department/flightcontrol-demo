@@ -28,76 +28,75 @@
                             }
                         },
                         "NAME": "web"
-                        }
                     }
-                },
-                {
-                    "id": "my-api",
-                    "name": "My API",
-                    "type": "fargate",
-                    "dockerfilePath": "Dockerfile",
-                    "dockerContext": "./",
-                    "cpu": 0.25,
-                    "memory": 0.5,
-                    "domain": "my-api.opsdepartment.com",
-                    "port": 8080,
-                    "minInstances": 1,
-                    "maxInstances": 1,
-                    "envVariables": {
-                        "DATABASE_URL": {
-                            "fromService": {
-                                "id": "db",
-                                "value": "dbConnectionString"
-                            }
-                        },
-                        "REDIS_HOST": {
-                            "fromService": {
-                                "id": "my-redis",
-                                "value": "host"
-                            }
-                        },
-                        "NAME": "api"
-                    }
-                },
-                {
-                    "id": "my-redis",
-                    "name": "My Redis",
-                    "type": "fargate",
-                    "dockerfilePath": "Dockerfile",
-                    "dockerContext": "./",
-                    "cpu": 0.25,
-                    "memory": 0.5,
-                    "port": 6379,
-                    "minInstances": 1,
-                    "maxInstances": 1,
-                    "envVariables": {
-                        "DATABASE_URL": {
-                            "fromService": {
-                                "id": "db",
-                                "value": "dbConnectionString"
-                            }
-                        },
-                        "REDIS_HOST": {
-                            "fromService": {
-                                "id": "my-redis",
-                                "value": "host"
-                            }
-                        },
-                        "NAME": "redis"
-                        }
-                    }
-                },
-                {
-                    "id": "db",
-                    "name": "Database",
-                    "type": "rds",
-                    "engine": "mysql",
-                    "engineVersion": "8",
-                    "instanceSize": "db.t2.micro",
-                    "storage": 20,
-                    "private": false
                 }
-            ]
-        }
-    ]
+            },
+            {
+                "id": "my-api",
+                "name": "My API",
+                "type": "fargate",
+                "dockerfilePath": "Dockerfile",
+                "dockerContext": "./",
+                "cpu": 0.25,
+                "memory": 0.5,
+                "domain": "my-api.opsdepartment.com",
+                "port": 8080,
+                "minInstances": 1,
+                "maxInstances": 1,
+                "envVariables": {
+                    "DATABASE_URL": {
+                        "fromService": {
+                            "id": "db",
+                            "value": "dbConnectionString"
+                        }
+                    },
+                    "REDIS_HOST": {
+                        "fromService": {
+                            "id": "my-redis",
+                            "value": "host"
+                        }
+                    },
+                    "NAME": "api"
+                }
+            },
+            {
+                "id": "my-redis",
+                "name": "My Redis",
+                "type": "fargate",
+                "dockerfilePath": "Dockerfile",
+                "dockerContext": "./",
+                "cpu": 0.25,
+                "memory": 0.5,
+                "port": 6379,
+                "minInstances": 1,
+                "maxInstances": 1,
+                "envVariables": {
+                    "DATABASE_URL": {
+                        "fromService": {
+                            "id": "db",
+                            "value": "dbConnectionString"
+                        }
+                    },
+                    "REDIS_HOST": {
+                        "fromService": {
+                            "id": "my-redis",
+                            "value": "host"
+                        }
+                    },
+                    "NAME": "redis"
+                }
+            },
+            {
+                "id": "db",
+                "name": "Database",
+                "type": "rds",
+                "engine": "mysql",
+                "engineVersion": "8",
+                "instanceSize": "db.t2.micro",
+                "storage": 20,
+                "private": false
+            }
+        ]
+    }
+]
 }
