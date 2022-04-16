@@ -83,16 +83,6 @@
 					},
 					"NAME": "redis"
 				}
-			},
-			{
-				"id": "db",
-				"name": "Database",
-				"type": "rds",
-				"engine": "mysql",
-				"engineVersion": "8",
-				"instanceSize": "db.t2.micro",
-				"storage": 20,
-				"private": false
 			}
 		]
 	}]
